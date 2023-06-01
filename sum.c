@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include <myvar.h>
+#include "myvar.h"
 
 double f(double x){
   return x*x;
@@ -86,4 +86,32 @@ int main(int argn, char **argc){
       
       MPI_Test(&request, &flag, &status);
       if (flag == 1) {
-        if (
+        if (status.MPI_SOURCE == 1) {
+          // sending information
+          if (n != 0) {
+            printf("Segment: [%lf, %lf] dx=%lf F=%lf\n", range.a, range.b, range.dx, range.F);
+          }
+          sum += range.F;
+          range.a = a + n * block;
+          range.b = a + (n + 1) * block;
+          range.dx = dx;
+          n++;
+          MPI_Send(&range, sizeof(range), MPI_BYTE, status.MPI_SOURCE, 0, MPI_COMM_WORLD);
+        }
+      
+        flag = -1;
+      }
+
+      // stop condition
+      if (n > segments) {
+        printf("Número de segmentos: %i, F=%lf\n", n - 1, sum);
+        break;
+      }
+    }
+  }// Master
+
+  MPI_Abort(MPI_COMM_WORLD, MPI_SUCCESS);
+
+  MPI_Finalize();
+  return 0;
+}
