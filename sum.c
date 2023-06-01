@@ -13,7 +13,7 @@ double f(double x){
 }
 
 int main(int argn, char **argc){
-  int miproc, numproc;   //rango del proceso actual, número de procesos 
+  int miproc, numproc;   
   MPI_Status status;
   double a, b, dx, F;
   MPI_myvar range;
@@ -22,12 +22,12 @@ int main(int argn, char **argc){
   double block;
   double sum = 0.0;
   
-  MPI_Init(&argn, &argc); /* Inicializar MPI */
-  MPI_Comm_rank(MPI_COMM_WORLD, &miproc); /* Determinar el rango del proceso invocado*/
-  MPI_Comm_size(MPI_COMM_WORLD, &numproc); /* Determinar el numero de procesos */
+  MPI_Init(&argn, &argc); 
+  MPI_Comm_rank(MPI_COMM_WORLD, &miproc); 
+  MPI_Comm_size(MPI_COMM_WORLD, &numproc); 
   MPI_Barrier(MPI_COMM_WORLD);
 
-  if (miproc == 0){ //master    
+  if (miproc == 0){    
     if (argn < 5){
       printf("Faltan parametros [a] [b] [segments] [n_partition]\n");
       printf("   dx = (b-a)/(segments*n_partition)\n");
@@ -52,7 +52,7 @@ int main(int argn, char **argc){
     dx = (b - a) / ((double)(segments * n_partition)); // tamaño de paso de las n_partition
     block = (b - a) / ((double)segments);
     printf("[%lf, %lf] segments=%i n_partition=%i, dx=%lf\n", a, b, segments, n_partition, dx);
-  } //master reading command line
+  } 
 
   MPI_Barrier(MPI_COMM_WORLD);
   
