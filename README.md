@@ -8,17 +8,17 @@ Corregir el código hecho en clase.
 Clonar el repositorio:
 
 ```text
-git clone https://github.com/areelu/practica1.git
+git clone https://github.com/areelu/practica3.git
 ```
 Compilar el archivo test2.c:
 
 ```text
-mpicc test2.c -o test2
+mpicc main.c -o name
 ```
 Correr el archivo compilado:
 
 ```text
-mpirun -np 10 ./test2
+mpirun -n 4 ./name 0 2 4 8
 ```
 
 Este programa requiere tener instalado mpi.
