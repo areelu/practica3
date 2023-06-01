@@ -1,25 +1,33 @@
-# Práctica 3
+# Practice 3
 
-# Suma de Riemann
-Corregir el código hecho en clase.
+# Riemann sum
+Correct the code done in class.
 
-## Ejecución
+## Execution
 
-Clonar el repositorio:
+Clone the repository
 
 ```text
 git clone https://github.com/areelu/practica3.git
 ```
-Compilar el archivo test2.c:
+Compile the test2.c file:
 
 ```text
 mpicc main.c -o name
 ```
-Correr el archivo compilado:
+Run the compiled file:
 
 ```text
 mpirun -n 4 ./name 0 2 4 8
 ```
 
-Este programa requiere tener instalado mpi.
+## Requirements
+
+This program requires mpi to be installed.
+
+## Test example
+
+
+
+
 
