@@ -27,7 +27,7 @@ This program requires mpi to be installed.
 
 ## Test example
 
-
+<img src='capture.png'>
 
 
 
