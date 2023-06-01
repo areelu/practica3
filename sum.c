@@ -56,12 +56,12 @@ int main(int argn, char **argc){
 
   MPI_Barrier(MPI_COMM_WORLD);
   
-  if (miproc != 0) { // slaves
+  if (miproc != 0) { 
     while(1){
       MPI_Send(&range, sizeof(range), MPI_BYTE, 0, 0, MPI_COMM_WORLD);
       MPI_Recv(&range, sizeof(range), MPI_BYTE, 0, 0, MPI_COMM_WORLD, &status);
       
-      // integral de Riemann
+
       double x;
       int i = 0;
       F = 0.0;
@@ -102,7 +102,7 @@ int main(int argn, char **argc){
         flag = -1;
       }
 
-      // stop condition
+
       if (n > segments) {
         printf("Número de segmentos: %i, F=%lf\n", n - 1, sum);
         break;
