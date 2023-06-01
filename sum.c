@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include "myvar.h"
+#include <myvar.h>
 
 double f(double x){
   return x*x;
