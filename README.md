@@ -13,7 +13,7 @@ git clone https://github.com/areelu/practica3.git
 Compile the test2.c file:
 
 ```text
-mpicc main.c -o name
+mpicc sum.c -o name
 ```
 Run the compiled file:
 
